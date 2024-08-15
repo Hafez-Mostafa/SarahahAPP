@@ -1,16 +1,20 @@
 <%- include('./shared/header'); -%>
-    <main class="flex-grow">
+<div class="min-h-screen flex flex-col">
+    <main class="flex-grow bg-gradient-to-r from-purple-500 to-blue-600 text-white">
+        <div class="container mx-auto text-center py-20">
+            <h1 class="text-5xl font-extrabold tracking-tight text-white">Welcome to Sarahah</h1>
+            <p class="text-xl mt-4 max-w-lg mx-auto">Send and receive anonymous feedback from friends and colleagues, all in one place.</p>
 
-        <div class="container mx-auto text-center mt-10">
-            <h1 class="text-4xl font-bold text-gray-800">Welcome to Sarahah App</h1>
-            <p class="text-gray-300 hover:text-white">Messages</p>
-            <p class="text-red-300 mt-4 text-5xl">Hello, this is your home page.</p>
-
-            <div class="mb-5">
-                <a href="/users/login" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">Login</a>
-                <a href="/users/register" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded">Register</a>
+            <div class="mt-10">
+                <a href="/users/login" class="inline-block bg-white text-purple-700 font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-gray-100 transition duration-300 ease-in-out">Login</a>
+                <a href="/users/register" class="inline-block ml-4 bg-purple-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-purple-800 transition duration-300 ease-in-out">Get Started</a>
             </div>
 
+            <div class="mt-16">
+                <p class="text-lg">Discover what your friends think about you, anonymously.</p>
+                <p class="text-lg mt-2">No sign-up needed to send feedback.</p>
+            </div>
         </div>
     </main>
     <%- include('./shared/footer'); -%>
+</div>

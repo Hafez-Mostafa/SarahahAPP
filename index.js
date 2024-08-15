@@ -8,6 +8,8 @@ import connectionDB from './db/connetionDB.js';
 import homeRouter from './src/modules/home/home.route.js'
 import userRouter from './src/modules/users/user.route.js'
 import messageRouter from './src/modules/messages/message.route.js'
+import otherRouter from './src/modules/others/others.route.js'
+
 
 
 
@@ -49,6 +51,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/home', homeRouter)
 app.use('/users', userRouter)
 app.use('/messages', messageRouter)
+app.use('/others', otherRouter)
+
 
 
 // app.use('/',(req,res,next)=>{

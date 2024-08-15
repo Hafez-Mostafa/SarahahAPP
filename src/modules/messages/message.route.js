@@ -3,9 +3,10 @@ import * as MC from './message.controller.js'
 
 const route = Router();
 
-// This handles the /home route
-route.get('/profile/:id', MC.sendMessage);
+route.post('/sendMessage', MC.sendMessage);
 
-route.get('/getMessages', MC.getMessages);
+
+
+route.get('/profile', MC.getprofile);
 
 export default route;

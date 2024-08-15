@@ -1,35 +1,29 @@
 
+
 import userModel from '../../../db/model/user.model.js'
 
 
 export const register = (req, res, next) => {
-    res.render('register.ejs');
+    res.render('register.ejs', { session: req.session });
 }
 
 export const login = (req, res, next) => {
-    res.render('login.ejs', { error: req.query.error });
+    res.render('login.ejs', { error: req.query.error, session: req.session });
 }
+
+
 
 
 export const loginHandler = async (req, res, next) => {
     try {
-
-        // Find the user by email
         const user = await userModel.findOne({ email: req.body.email });
-
-        // If user not found, redirect with an error
         if (!user || user.password != req.body.password) {
             return res.render('login.ejs', { error: 'email or password not correct' });
-            // return res.redirect('/login?error=email or password not correct'); 
         }
-
         req.session.loggedIn = true;
         req.session.userId = user._id;
         req.session.userName = user.name;
-
-
-        return res.redirect('/messages/getMessages');
-
+        return res.redirect('/home',);
 
     } catch (error) {
         // Handle any other errors
@@ -63,8 +57,12 @@ export const registerHandler = async (req, res, next) => {
     }
 };
 
-export const profile = async (req, res, next) => {
+
+
+export const logOut = (req, res, next) => {
+    if(req.session){req.session.destroy((err) => {
+        res.redirect('/users/login');
+    })}
     
+
 }
-
-

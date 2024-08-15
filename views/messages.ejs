@@ -1,12 +1,27 @@
-<%-include('./shared/header')%>
-    <div class="bg-gray-50 m-16 flex-1 p-10">
-        <div class="text-center border-rose-900">
-            <p><%= session.userName %></p>
-            <p class="text-red-400 m-3">Visit Profile</p>
-            <a class="mt-3 text-white p-2 rounded-lg bg-sky-500 hover:bg-sky-700" 
-                target="_blank" href="http://localhost:3000/messages/profile/<%= session.userId %>">
-                Profile
-            </a>
-        </div>
+
+
+
+<%- include('./shared/header') %>
+<div class="bg-gray-50 flex justify-center items-center min-h-screen p-8">
+
+    <% if (msg) { %>
+    <p>sent</p>
+    <% } else { %>
+    <div class="w-full max-w-md p-6 bg-white rounded-lg shadow-lg">
+        <h2 class="text-2xl font-semibold text-gray-800 text-center mb-6">
+            Welcome, <%= session.userName %>
+        </h2>
+        <form action="/messages/sendMessage" method="post">
+            <textarea name="content" id="message"
+                class="w-full p-4 mb-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
+                rows="6" placeholder="Type your message here..."></textarea>
+            <button
+                class="w-full text-white bg-sky-500 hover:bg-sky-600 p-3 rounded-lg font-semibold transition-colors duration-300"
+                type="submit">
+                Send Message
+            </button>
+        </form>
     </div>
-<%-include('./shared/footer')%>
+    <% } %>
+</div>
+<%- include('./shared/footer') %>

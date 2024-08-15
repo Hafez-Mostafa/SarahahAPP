@@ -6,8 +6,7 @@ const messageSchema = mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'User'
     }, 
-    email: string, 
-    password: string
+    content: String, 
 })
 
 

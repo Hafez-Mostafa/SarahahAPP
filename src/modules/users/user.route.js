@@ -7,6 +7,8 @@ const route = Router();
 
 
 route.get('/login', UC.login);
+route.get('/logout', UC.logOut);
+
 
 route.post('/loginHandler', UC.loginHandler);
 
