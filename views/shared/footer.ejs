@@ -47,7 +47,12 @@
 </footer>
 
 
-<script >document.getElementById('trigger').addEventListener('click', function() {
+<script >
+document.getElementById('trigger').addEventListener('click', function() {
+    const popup = document.getElementById('popup');
+    popup.classList.toggle('hidden');
+});
+document.getElementById('closeShare').addEventListener('click', function() {
     const popup = document.getElementById('popup');
     popup.classList.toggle('hidden');
 });
