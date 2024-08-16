@@ -1,23 +1,25 @@
-import bcrypt from 'bcrypt'
-import userModel from '../../../db/model/user.model.js'
-
+import bcrypt from 'bcrypt';
+import userModel from '../../../db/model/user.model.js';
 
 export const login = (req, res, next) => {
-    res.render('login.ejs', { error: req.query.error, session: req.session });
-}
+    res.render('login', { error: req.query.error, session: req.session });
+};
 
 export const loginHandler = async (req, res, next) => {
-    const { password, email } = req.body
+    const { password, email } = req.body;
     try {
         const user = await userModel.findOne({ email });
+        
+        // Check if the user exists and the password matches
         if (!user || !(await bcrypt.compare(password, user.password))) {
-            return res.render('login.ejs',
-                { error: 'Invalid email or password' },
-                { session: req.session });
+            return res.render('login', { error: 'Invalid email or password', session: req.session });
         }
+
+        // Set session data
         req.session.loggedIn = true;
         req.session.userId = user._id;
         req.session.userName = user.name;
+
         return res.redirect('/');
 
     } catch (error) {
@@ -26,16 +28,14 @@ export const loginHandler = async (req, res, next) => {
     }
 };
 
-
-
-
-
 export const logOut = (req, res, next) => {
     if (req.session) {
         req.session.destroy((err) => {
+            if (err) {
+                console.error('Error destroying session:', err);
+                return next(err);
+            }
             res.redirect('/login');
-        })
+        });
     }
-
-
-}
+};
