@@ -2,7 +2,8 @@ import bcrypt from 'bcrypt';
 import userModel from '../../../db/model/user.model.js';
 
 export const login = (req, res, next) => {
-    res.render('login', { error: req.query.error, session: req.session });
+    res.render('login', { error: req.query.error,
+                         session: req.session });
 };
 
 export const loginHandler = async (req, res, next) => {
@@ -19,6 +20,7 @@ export const loginHandler = async (req, res, next) => {
         req.session.loggedIn = true;
         req.session.userId = user._id;
         req.session.userName = user.name;
+        req.session.userEmail = user.email;
 
         return res.redirect('/');
 
