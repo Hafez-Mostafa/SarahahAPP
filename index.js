@@ -1,4 +1,5 @@
 import cors from 'cors';
+import path from 'path';
 
 import express from 'express'
 import session from 'express-session';
@@ -49,8 +50,7 @@ app.use(session({
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
-app.use(express.static('public'))
-app.use(express.urlencoded({ extended: true }));
+app.set('views', path.resolve('views'));
 
 
 app.use('/', homeRouter)
