@@ -6,9 +6,11 @@ import sessionConnect from 'connect-mongodb-session';
 import connectionDB from './db/connetionDB.js';
 
 import homeRouter from './src/modules/home/home.route.js'
-import userRouter from './src/modules/users/user.route.js'
+import userRouter from './src/modules/user/user.route.js'
 import messageRouter from './src/modules/messages/message.route.js'
-import otherRouter from './src/modules/others/others.route.js'
+import loginRouter from './src/modules/login/login.route.js'
+import registerRouter from './src/modules/register/register.route.js'
+
 
 
 
@@ -48,10 +50,12 @@ app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }));
 
 
-app.use('/home', homeRouter)
-app.use('/users', userRouter)
-app.use('/messages', messageRouter)
-app.use('/others', otherRouter)
+app.use('/', homeRouter)
+app.use('/', userRouter)
+app.use('/', messageRouter)
+app.use('/', loginRouter)
+app.use('/', registerRouter)
+
 
 
 
