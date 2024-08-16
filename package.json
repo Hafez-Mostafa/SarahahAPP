@@ -8,8 +8,11 @@
     "build:css": "postcss src/styles/tailwind.css -o public/css/style.css",
     "start": "nodemon index.js"
   },
+  "engines": {
+    "node": "20.x"
+  },
   "keywords": [],
-  "author": "",
+  "author": "Mosmoyas",
   "license": "ISC",
   "dependencies": {
     "autoprefixer": "^10.4.20",

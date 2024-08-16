@@ -1,3 +1,4 @@
+import cors from 'cors';
 
 import express from 'express'
 import session from 'express-session';
@@ -13,10 +14,12 @@ import registerRouter from './src/modules/register/register.route.js'
 
 
 
-
-
-
 const app = express()
+
+
+
+app.use(cors());
+
 connectionDB()
 
 
