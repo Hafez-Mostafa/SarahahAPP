@@ -1,12 +1,3 @@
-import bcrypt from 'bcrypt'
-import userModel from '../../../db/model/user.model.js'
-
-
-export const register = (req, res, next) => {
-    res.render('register.ejs', { session: req.session });
-}
-
-
 import bcrypt from 'bcrypt';
 import userModel from '../../../db/model/user.model.js';
 
